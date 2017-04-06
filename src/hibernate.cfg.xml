@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--数据库-->
+        <property name="connection.url">jdbc:mysql://localhost:3306/house</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <property name="current_session_context_class">thread</property>
+        <property name="transaction.auto_close_session">true</property>
+        <mapping class="com.lumr.house.entity.District"/>
+        <mapping resource="com/lumr/house/entity/District.hbm.xml"/>
+        <mapping resource="com/lumr/house/entity/House.hbm.xml"/>
+        <mapping class="com.lumr.house.entity.House"/>
+        <mapping resource="com/lumr/house/entity/Street.hbm.xml"/>
+        <mapping class="com.lumr.house.entity.Street"/>
+        <mapping resource="com/lumr/house/entity/Types.hbm.xml"/>
+        <mapping class="com.lumr.house.entity.Types"/>
+        <mapping resource="com/lumr/house/entity/Users.hbm.xml"/>
+        <mapping class="com.lumr.house.entity.Users"/>
+    </session-factory>
+</hibernate-configuration>

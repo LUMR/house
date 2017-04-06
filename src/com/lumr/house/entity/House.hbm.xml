@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.lumr.house.entity.House" table="house" schema="house">
+        <id name="id" column="ID"/>
+        <property name="userId" column="USER_ID"/>
+        <property name="typeId" column="TYPE_ID"/>
+        <property name="title" column="TITLE"/>
+        <property name="streetId" column="STREET_ID"/>
+        <property name="description" column="DESCRIPTION"/>
+        <property name="price" column="PRICE"/>
+        <property name="pubdate" column="PUBDATE"/>
+        <property name="floorage" column="FLOORAGE"/>
+        <property name="contact" column="CONTACT"/>
+    </class>
+</hibernate-mapping>
