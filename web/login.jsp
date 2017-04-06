@@ -22,7 +22,7 @@
     <DIV class=dialog>
         <DIV class=box>
             <H4>用户登录</H4>
-            <FORM id=user method=post name=user action=/HouseRent/page/user!login.action>
+            <FORM id=user method=post name=user action="login">
                 <DIV class=infos>
                     <TABLE class=field>
                         <TBODY>
@@ -45,8 +45,8 @@
 						</tr>
 						--></TBODY>
                     </TABLE>
-                    <DIV class=buttons><INPUT onclick='document.location="guanli.htm"' value=登陆 type=button> <INPUT
-                            onclick='document.location="regs.htm"' value=注册 type=button>
+                    <DIV class=buttons><INPUT value=登陆 type="submit">
+                        <INPUT onclick='document.location="regs.jsp"' value=注册 type=button>
                     </DIV>
                 </DIV>
             </FORM>

@@ -26,8 +26,7 @@
             <DD class=past>填写房屋信息</DD>
         </DL>
         <DIV class=box>
-            <FORM id=add_action method=post name=add.action
-                  action=/HouseRent/page/add.action>
+            <FORM id=add_action method=post name=add.action action="/fabu">
                 <DIV class=infos>
                     <TABLE class=field>
                         <TBODY>
@@ -37,16 +36,15 @@
                         </TR>
                         <TR>
                             <TD class=field>户　　型：</TD>
-                            <TD><SELECT class=text name=type_id>
-                                <OPTION selected
-                                        value=1000>一室一厅
-                                </OPTION>
-                            </SELECT></TD>
+                            <TD>
+                                <SELECT class=text name=type_id>
+                                    <OPTION selected value=1000>一室一厅</OPTION>
+                                </SELECT>
+                            </TD>
                         </TR>
                         <TR>
                             <TD class=field>面　　积：</TD>
-                            <TD><INPUT id=add_action_floorage class=text type=text
-                                       name=floorage></TD>
+                            <TD><INPUT id=add_action_floorage class=text type=text name=floorage></TD>
                         </TR>
                         <TR>
                             <TD class=field>价　　格：</TD>
@@ -54,18 +52,19 @@
                         </TR>
                         <TR>
                             <TD class=field>房产证日期：</TD>
-                            <TD><INPUT class=text type=text name=houseDate></TD>
+                            <TD><INPUT class=text type="date" name=houseDate></TD>
                         </TR>
                         <TR>
                             <TD class=field>位　　置：</TD>
-                            <TD>区：<SELECT class=text name=district_id>
-                                <OPTION selected
-                                        value=1004>海淀区
-                                </OPTION>
-                            </SELECT> 街：<SELECT class=text
-                                                name=street_id>
-                                <OPTION selected value=1001>中关村大街</OPTION>
-                            </SELECT></TD>
+                            <TD>区：
+                                <SELECT class=text name=district_id>
+                                    <OPTION selected value=1004>海淀区</OPTION>
+                                </SELECT>
+                                街：
+                                <SELECT class=text name=street_id>
+                                    <OPTION selected value=1001>中关村大街</OPTION>
+                                </SELECT>
+                            </TD>
                         </TR><!--
 						<tr>
 							<td class="field">坐  标：</td>
@@ -86,7 +85,7 @@
                         </TR>
                         </TBODY>
                     </TABLE>
-                    <DIV class=buttons><INPUT onclick='document.location="list.htm"' value=立即发布 type=button>
+                    <DIV class=buttons><INPUT value=立即发布 type="submit">
                     </DIV>
                 </DIV>
             </FORM>

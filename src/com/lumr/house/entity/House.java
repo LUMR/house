@@ -20,6 +20,21 @@ public class House {
     private String floorage;
     private String contact;
 
+    public House(int userId, int typeId, int streetId, String title, String description, Integer price, Date pubdate, String floorage, String contact) {
+        this.userId = userId;
+        this.typeId = typeId;
+        this.streetId = streetId;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.pubdate = pubdate;
+        this.floorage = floorage;
+        this.contact = contact;
+    }
+
+    public House() {
+    }
+
     @Column(name = "STREET_ID")
     public int getStreetId() {
         return streetId;

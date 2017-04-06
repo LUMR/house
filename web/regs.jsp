@@ -26,7 +26,7 @@
             <DD class=past>填写个人信息</DD>
         </DL>
         <DIV class=box>
-            <FORM action=user!register.action>
+            <FORM action="/regs" method="post">
                 <DIV class=infos>
                     <TABLE class=field>
                         <TBODY>
@@ -53,7 +53,7 @@
                         </TBODY>
                     </TABLE>
                     <DIV class=buttons>
-                        <INPUT onclick='document.location="regs.htm"' value=立即注册 type=button>
+                        <INPUT value=立即注册 type="submit">
                     </DIV>
                 </DIV>
             </FORM>

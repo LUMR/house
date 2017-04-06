@@ -17,6 +17,22 @@ public class Users {
     private String username;
     private String isadmin;
 
+    public Users(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
+    public Users(String name, String password, String telephone, String username) {
+        this.name = name;
+        this.password = password;
+        this.telephone = telephone;
+        this.username = username;
+        isadmin = "no";
+    }
+
+    public Users() {
+    }
+
     @Id
     @Column(name = "ID")
     public int getId() {
