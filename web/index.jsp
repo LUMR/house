@@ -12,7 +12,7 @@
   </head>
   <body>
   <a href="/index">房屋信息</a>
-  <a href="/regs">注册</a>
+  <a href="/regs.jsp">注册</a>
   <a href="/login.jsp">登陆</a>
   <a href="/fabu.jsp">登记房屋</a>
   </body>

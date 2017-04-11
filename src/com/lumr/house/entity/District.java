@@ -4,6 +4,7 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Set;
 
 /**
  * Created by fsweb on 17-4-6.
@@ -12,6 +13,15 @@ import javax.persistence.Id;
 public class District {
     private int id;
     private String name;
+    private Set<Street> streets;
+
+    public Set<Street> getStreets() {
+        return streets;
+    }
+
+    public void setStreets(Set<Street> streets) {
+        this.streets = streets;
+    }
 
     @Id
     @Column(name = "ID")

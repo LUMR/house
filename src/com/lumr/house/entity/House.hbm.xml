@@ -9,11 +9,14 @@
         <property name="userId" column="USER_ID"/>
         <property name="typeId" column="TYPE_ID"/>
         <property name="title" column="TITLE"/>
-        <property name="streetId" column="STREET_ID"/>
+        <property name="streetId" column="STREET_ID" update="false" insert="false"/>
         <property name="description" column="DESCRIPTION"/>
         <property name="price" column="PRICE"/>
         <property name="pubdate" column="PUBDATE"/>
         <property name="floorage" column="FLOORAGE"/>
         <property name="contact" column="CONTACT"/>
+
+        <many-to-one name="user" column="STREET_ID" class="com.lumr.house.entity.Users"/>
+
     </class>
 </hibernate-mapping>

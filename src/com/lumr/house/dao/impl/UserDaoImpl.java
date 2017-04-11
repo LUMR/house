@@ -15,14 +15,21 @@ import java.util.List;
 public class UserDaoImpl extends BaseDao implements UserDao {
 
     @Override
-    public Users getUser(String name) {
+    public Users getUser(Users user) {
         Session session = getSession();
         Transaction ts = session.beginTransaction();
-        Query query = session.createQuery("from Users where name = '"+name+"'");
-        List<Users> list = query.list();
-        if (list.size()>0)
-            return list.get(0);
-        else
-            return null;
+        String hql = "from Users where 1=1";
+
+        if (user.getId() != null) {
+            hql += " and id = :id";
+        }
+
+        if (user.getName() != null) {
+            hql += " and name = :name";
+        }
+
+        Query query = session.createQuery(hql);
+        query.setProperties(user);
+        return (Users)query.uniqueResult();
     }
 }

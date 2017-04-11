@@ -17,6 +17,7 @@ import java.util.List;
  * Created by lumr on 2017/4/6.
  */
 public class HouseServiceImpl extends BaseDao implements HouseService {
+    public static int maxResult = 5;
     @Override
     public List<House> getAllHouses() {
         Session session = getSession();
@@ -32,11 +33,28 @@ public class HouseServiceImpl extends BaseDao implements HouseService {
     }
 
     @Override
+    public List<House> getAllHouses(int pages) {
+        Session session = getSession();
+        Transaction ts = session.beginTransaction();
+        try{
+            Query query = session.createQuery("from House ");
+            query.setFirstResult(pages*maxResult);
+            query.setMaxResults(maxResult);
+            return query.list();
+        }catch (HibernateException e){
+            e.printStackTrace();
+            ts.rollback();
+            return null;
+        }
+    }
+
+    @Override
     public List<House> getHouses(Users users) {
         Session session = getSession();
         Transaction ts = session.beginTransaction();
         try{
-            Query query = session.createQuery("from House where userId = "+users.getId());
+            Query query = session.createQuery("from House where userId = ?");
+            query.setString(0,users.getName());
             return query.list();
         }catch (HibernateException e){
             e.printStackTrace();
@@ -57,17 +75,7 @@ public class HouseServiceImpl extends BaseDao implements HouseService {
 
     @Override
     public int addHouse(House house) {
-        Session session = getSession();
-        Transaction ts = session.beginTransaction();
-        try{
-            session.save(house);
-            ts.commit();
-            return 1;
-        }catch (HibernateException e){
-            e.printStackTrace();
-            ts.rollback();
-            return 0;
-        }
+        return saveObj(house);
     }
 
     @Override

@@ -6,14 +6,15 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0049)http://localhost:8080/HouseRent/page/register.jsp -->
 <HTML xmlns="http://www.w3.org/1999/xhtml">
 <HEAD><TITLE>青鸟租房 - 用户注册</TITLE>
     <META content="text/html; charset=utf-8" http-equiv=Content-Type>
-    <LINK
-            rel=stylesheet type=text/css href="css/style.css">
+    <LINK rel=stylesheet type=text/css href="css/style.css">
     <META name=GENERATOR content="MSHTML 8.00.7601.17514">
+    <script src="scripts/check.js"></script>
 </HEAD>
 <BODY>
 <DIV id=header class=wrap>
@@ -26,13 +27,13 @@
             <DD class=past>填写个人信息</DD>
         </DL>
         <DIV class=box>
-            <FORM action="/regs" method="post">
+            <FORM action="/regs" method="post" onsubmit="return checkInput()">
                 <DIV class=infos>
                     <TABLE class=field>
                         <TBODY>
                         <TR>
                             <TD class=field>用 户 名：</TD>
-                            <TD><INPUT class=text type=text name=name></TD>
+                            <TD><INPUT class=text type=text name=name onchange="checkUserName(this)"><span id="checkName"></span></TD>
                         </TR>
                         <TR>
                             <TD class=field>密　　码：</TD>
@@ -53,7 +54,7 @@
                         </TBODY>
                     </TABLE>
                     <DIV class=buttons>
-                        <INPUT value=立即注册 type="submit">
+                        <INPUT value=立即注册 type="submit"><span id="message">${message}</span>
                     </DIV>
                 </DIV>
             </FORM>

@@ -11,5 +11,9 @@
         <property name="telephone" column="TELEPHONE"/>
         <property name="username" column="USERNAME"/>
         <property name="isadmin" column="ISADMIN"/>
+        <set name="houses" lazy="true">
+            <key column="USER_ID"></key>
+            <one-to-many class="com.lumr.house.entity.House" />
+        </set>
     </class>
 </hibernate-mapping>

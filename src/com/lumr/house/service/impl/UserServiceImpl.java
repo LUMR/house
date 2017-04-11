@@ -9,15 +9,31 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 
 /**
  * Created by lumr on 2017/4/6.
  */
 public class UserServiceImpl extends BaseDao implements UserService {
     @Override
+    public int checkUser(String name) {
+        Session session= getSession();
+        session.beginTransaction();
+        String hql = "select name from Users where name = ?";
+        List<String> list = session.createQuery(hql)
+                .setString(0,name)
+                .list();
+        if (list.size()>0)
+            return 1;
+        else
+            return 0;
+    }
+
+    @Override
     public Users login(Users user) {
         UserDao dao = new UserDaoImpl();
-        Users users = dao.getUser(user.getName());
+        Users users = dao.getUser(user);
         if (users==null)
             return null;
         if (users.getName().equals(user.getName()))
@@ -28,16 +44,6 @@ public class UserServiceImpl extends BaseDao implements UserService {
 
     @Override
     public int register(Users user) {
-        Session session = getSession();
-        Transaction ts = session.beginTransaction();
-        try {
-            session.save(user);
-            ts.commit();
-            return 1;
-        } catch (HibernateException e) {
-            e.printStackTrace();
-            ts.rollback();
-            return 0;
-        }
+        return saveObj(user);
     }
 }

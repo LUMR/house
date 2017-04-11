@@ -19,6 +19,7 @@ public class House {
     private Date pubdate;
     private String floorage;
     private String contact;
+    private Users user;
 
     public House(int userId, int typeId, int streetId, String title, String description, Integer price, Date pubdate, String floorage, String contact) {
         this.userId = userId;
@@ -33,6 +34,14 @@ public class House {
     }
 
     public House() {
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
     }
 
     @Column(name = "STREET_ID")

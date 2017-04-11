@@ -94,7 +94,7 @@
                 <TD>
                     <DL>
                         <DT><A href="details.htm" target="_blank">${house.title}</A></DT>
-                        <DD>${house.description}<BR>联系方式：3456</DD>
+                        <DD>${house.description}<BR>联系方式：${house.contact}</DD>
                     </DL>
                 </TD>
                 <TD class=house-type>一室一厅</TD>

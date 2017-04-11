@@ -4,18 +4,20 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Set;
 
 /**
  * Created by fsweb on 17-4-6.
  */
 @Entity
 public class Users {
-    private int id;
+    private Integer id;
     private String name;
     private String password;
     private String telephone;
     private String username;
     private String isadmin;
+    private Set<House> houses;
 
     public Users(String name, String password) {
         this.name = name;
@@ -33,13 +35,21 @@ public class Users {
     public Users() {
     }
 
+    public Set<House> getHouses() {
+        return houses;
+    }
+
+    public void setHouses(Set<House> houses) {
+        this.houses = houses;
+    }
+
     @Id
     @Column(name = "ID")
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

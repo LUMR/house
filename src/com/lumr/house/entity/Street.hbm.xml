@@ -8,5 +8,9 @@
         <id name="id" column="ID"/>
         <property name="name" column="NAME"/>
         <property name="districtId" column="DISTRICT_ID"/>
+        <set name="houses">
+            <key column="STREET_ID"></key>
+            <one-to-many class="com.lumr.house.entity.House" />
+        </set>
     </class>
 </hibernate-mapping>

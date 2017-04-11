@@ -7,5 +7,9 @@
     <class name="com.lumr.house.entity.District" table="district" schema="house">
         <id name="id" column="ID"/>
         <property name="name" column="NAME"/>
+        <set name="streets">
+            <key column="DISTRICT_ID"></key>
+            <one-to-many class="com.lumr.house.entity.Street"/>
+        </set>
     </class>
 </hibernate-mapping>

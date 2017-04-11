@@ -12,6 +12,7 @@ import java.util.List;
  */
 public interface HouseService {
     List<House> getAllHouses();
+    List<House> getAllHouses(int pages);
     List<House> getHouses(Users users);
     List<House> getHouses(Street street);
     List<House> getHouses(Types types);
