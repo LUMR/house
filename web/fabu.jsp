@@ -11,9 +11,18 @@
 <HTML xmlns="http://www.w3.org/1999/xhtml">
 <HEAD><TITLE>青鸟租房 -发布房屋信息</TITLE>
     <META content="text/html; charset=utf-8" http-equiv=Content-Type>
-    <LINK
-            rel=stylesheet type=text/css href="css/style.css">
+    <LINK rel=stylesheet type=text/css href="css/style.css">
     <META name=GENERATOR content="MSHTML 8.00.7601.17514">
+    <script src="scripts/jquery-3.2.1.js"></script>
+    <script src="scripts/check.js"></script>
+    <script>
+        $(document).ready(
+            function () {
+                $("#types").load("/gettype");
+                $("#district").load("/getdist");
+            }
+        );
+    </script>
 </HEAD>
 <BODY>
 <DIV id=header class=wrap>
@@ -37,7 +46,7 @@
                         <TR>
                             <TD class=field>户　　型：</TD>
                             <TD>
-                                <SELECT class=text name=type_id>
+                                <SELECT id="types" class=text name=type_id>
                                     <OPTION selected value=1000>一室一厅</OPTION>
                                 </SELECT>
                             </TD>
@@ -57,11 +66,11 @@
                         <TR>
                             <TD class=field>位　　置：</TD>
                             <TD>区：
-                                <SELECT class=text name=district_id>
+                                <SELECT id="district" class=text name=district_id onchange="get_street(this)">
                                     <OPTION selected value=1004>海淀区</OPTION>
                                 </SELECT>
                                 街：
-                                <SELECT class=text name=street_id>
+                                <SELECT id="street" class=text name=street_id >
                                     <OPTION selected value=1001>中关村大街</OPTION>
                                 </SELECT>
                             </TD>

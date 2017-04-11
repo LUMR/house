@@ -42,3 +42,13 @@ function callBackName() {
         // alert(NameNotExist);
     }
 }
+
+function get_street(dist) {
+    var district = dist.value;
+    $("#street").load("/getstreet",{"district":district},function(data,statusTxt,xhr){callBack_street(data,statusTxt,xhr);})
+}
+
+function callBack_street(data,statusTxt,xhr) {
+    if(statusTxt=="error")
+        alert("Error: "+xhr.status+": "+xhr.statusText);
+}

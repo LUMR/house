@@ -36,7 +36,7 @@ public class UserServiceImpl extends BaseDao implements UserService {
         Users users = dao.getUser(user);
         if (users==null)
             return null;
-        if (users.getName().equals(user.getName()))
+        if (users.getPassword().equals(user.getPassword()))
             return users;
         else
             return null;
