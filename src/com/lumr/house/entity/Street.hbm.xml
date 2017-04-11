@@ -5,9 +5,13 @@
 <hibernate-mapping>
 
     <class name="com.lumr.house.entity.Street" table="street" schema="house">
-        <id name="id" column="ID"/>
+        <id name="id" column="ID">
+            <generator class="increment"/>
+        </id>
         <property name="name" column="NAME"/>
-        <property name="districtId" column="DISTRICT_ID"/>
+        <property name="districtId" column="DISTRICT_ID" update="false" insert="false"/>
+        <!--inverse反转-->
+        <many-to-one name="district" column="DISTRICT_ID" class="com.lumr.house.entity.District"/>
         <set name="houses">
             <key column="STREET_ID"></key>
             <one-to-many class="com.lumr.house.entity.House" />

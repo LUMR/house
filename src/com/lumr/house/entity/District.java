@@ -15,6 +15,13 @@ public class District {
     private String name;
     private Set<Street> streets;
 
+    public District() {
+    }
+
+    public District(String name) {
+        this.name = name;
+    }
+
     public Set<Street> getStreets() {
         return streets;
     }

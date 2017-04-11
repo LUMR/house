@@ -14,7 +14,28 @@ public class Street {
     private int id;
     private String name;
     private int districtId;
+    private District district;
     private Set<House> houses;
+
+    public Street() {
+    }
+
+    public Street(String name) {
+        this.name = name;
+    }
+
+    public Street(String name, int districtId) {
+        this.name = name;
+        this.districtId = districtId;
+    }
+
+    public District getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(District district) {
+        this.district = district;
+    }
 
     public Set<House> getHouses() {
         return houses;

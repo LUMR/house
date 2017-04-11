@@ -20,6 +20,8 @@ public class House {
     private String floorage;
     private String contact;
     private Users user;
+    private Street street;
+    private Types types;
 
     public House(int userId, int typeId, int streetId, String title, String description, Integer price, Date pubdate, String floorage, String contact) {
         this.userId = userId;
@@ -34,6 +36,22 @@ public class House {
     }
 
     public House() {
+    }
+
+    public Street getStreet() {
+        return street;
+    }
+
+    public void setStreet(Street street) {
+        this.street = street;
+    }
+
+    public Types getTypes() {
+        return types;
+    }
+
+    public void setTypes(Types types) {
+        this.types = types;
     }
 
     public Users getUser() {
