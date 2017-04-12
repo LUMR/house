@@ -90,7 +90,7 @@
                 <img src="../images/thumb_house.gif" width="100" height="75" alt=""></a></span></TD>
                 <TD>
                     <DL>
-                        <DT><A href="details.htm" target="_blank">${house.title}</A></DT>
+                        <DT><A href="/details?hid=${house.id}" target="_blank">${house.title}</A></DT>
                         <DD>${house.description}<BR>联系方式：${house.contact}</DD>
                     </DL>
                 </TD>
@@ -104,9 +104,9 @@
     <DIV class=pager>
         <UL>
             <LI class=current><A href="/index">首页</A></LI>
-            <LI><A href="#">上一页</A></LI>
-            <LI><A href="#">下一页</A></LI>
-            <LI><A href="#">末页</A></LI>
+            <LI><A href="/index?page=${request.page-1}">上一页</A></LI>
+            <LI><A href="/index?page=${request.page+1}">下一页</A></LI>
+            <LI><A href="/index?page=-1">末页</A></LI>
         </UL>
         <SPAN
                 class=total>1/2页</SPAN></DIV>

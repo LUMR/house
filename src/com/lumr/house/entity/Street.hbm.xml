@@ -12,7 +12,7 @@
         <property name="districtId" column="DISTRICT_ID" update="false" insert="false"/>
         <!--inverse反转-->
         <many-to-one name="district" column="DISTRICT_ID" class="com.lumr.house.entity.District"/>
-        <set name="houses">
+        <set name="houses" inverse="true">
             <key column="STREET_ID"></key>
             <one-to-many class="com.lumr.house.entity.House" />
         </set>

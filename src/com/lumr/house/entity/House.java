@@ -1,6 +1,9 @@
 package com.lumr.house.entity;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 
 
@@ -17,13 +20,13 @@ public class House {
     private String description;
     private Integer price;
     private Date pubdate;
-    private String floorage;
+    private int floorage;
     private String contact;
     private Users user;
     private Street street;
     private Types types;
 
-    public House(int userId, int typeId, int streetId, String title, String description, Integer price, Date pubdate, String floorage, String contact) {
+    public House(int userId, int typeId, int streetId, String title, String description, Integer price, Date pubdate, int floorage, String contact) {
         this.userId = userId;
         this.typeId = typeId;
         this.streetId = streetId;
@@ -70,6 +73,7 @@ public class House {
     public void setStreetId(int streetId) {
         this.streetId = streetId;
     }
+
     @Column(name = "USER_ID")
     public int getUserId() {
         return userId;
@@ -78,6 +82,7 @@ public class House {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
     @Column(name = "TYPE_ID")
     public int getTypeId() {
         return typeId;
@@ -139,11 +144,11 @@ public class House {
 
     @Basic
     @Column(name = "FLOORAGE")
-    public String getFloorage() {
+    public int getFloorage() {
         return floorage;
     }
 
-    public void setFloorage(String floorage) {
+    public void setFloorage(int floorage) {
         this.floorage = floorage;
     }
 
@@ -169,7 +174,7 @@ public class House {
         if (description != null ? !description.equals(house.description) : house.description != null) return false;
         if (price != null ? !price.equals(house.price) : house.price != null) return false;
         if (pubdate != null ? !pubdate.equals(house.pubdate) : house.pubdate != null) return false;
-        if (floorage != null ? !floorage.equals(house.floorage) : house.floorage != null) return false;
+        if (floorage != 0) return false;
         if (contact != null ? !contact.equals(house.contact) : house.contact != null) return false;
 
         return true;
@@ -178,11 +183,11 @@ public class House {
     @Override
     public int hashCode() {
         int result = id;
+        result = 31 * result + floorage;
         result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + (pubdate != null ? pubdate.hashCode() : 0);
-        result = 31 * result + (floorage != null ? floorage.hashCode() : 0);
         result = 31 * result + (contact != null ? contact.hashCode() : 0);
         return result;
     }

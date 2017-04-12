@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0050)http://localhost:8080/HouseRent/manage!list.action -->
 <HTML xmlns="http://www.w3.org/1999/xhtml">
@@ -20,7 +21,9 @@
 <BODY>
 <DIV id=header class=wrap>
     <DIV id=logo><IMG src="../images/logo.gif"></DIV>
-    <DIV class=search><LABEL class="ui-green searchs"><a href="fabu.htm" title="">发布房屋信息</a></LABEL>
+    <DIV class=search>
+        <label class="ui-blue"><code>你好! ${user.name}</code></label>
+        <LABEL class="ui-green searchs"><a href="fabu.jsp" title="">发布房屋信息</a></LABEL>
         <LABEL class=ui-green><INPUT onclick='document.location="index.jsp"' value="退       出" type=button name=search></LABEL>
     </DIV>
 </DIV>
@@ -28,48 +31,22 @@
     <DIV id=houseArea>
         <TABLE class=house-list>
             <TBODY>
-            <TR>
-                <TD class=house-thumb><SPAN><A href="details.htm" target="_blank"><img src="../images/thumb_house.gif"
-                                                                                       width="100" height="75"
-                                                                                       alt=""></A></SPAN></TD>
+            <c:forEach var="house" items="${user.houses}" varStatus="status">
+                <TR <c:if test="${status.count%2==0}">class="odd" </c:if> >
+                <TD class=house-thumb><SPAN><A href="details.htm" target="_blank">
+                    <img src="../images/thumb_house.gif" width="100" height="75" alt=""></A></SPAN></TD>
                 <TD>
                     <DL>
-                        <DT><A href="details.htm" target="_blank">123</A></DT>
-                        <DD>海淀区中关村大街,123平米<BR>联系方式：123</DD>
+                        <DT><A href="/details?hid=${house.id}" target="_blank">${house.title}</A></DT>
+                        <DD>${house.street.district.name}${house.street.name},${house.floorage}平米<BR>联系方式：${house.contact}</DD>
                     </DL>
                 </TD>
                 <TD class=house-type><LABEL class=ui-green><INPUT onclick=update(46) value="修    改" type=button
                                                                   name=search></LABEL></TD>
                 <TD class=house-price><LABEL class=ui-green><INPUT value="删    除" type=button name=search></LABEL></TD>
             </TR>
-            <TR class=odd>
-                <TD class=house-thumb><SPAN><A href="details.htm" target="_blank"><img src="../images/thumb_house.gif"
-                                                                                       width="100" height="75"
-                                                                                       alt=""></A></SPAN></TD>
-                <TD>
-                    <DL>
-                        <DT><A href="details.htm" target="_blank">jjjj</A></DT>
-                        <DD>海淀区中关村大街,123平米<BR>联系方式：ff</DD>
-                    </DL>
-                </TD>
-                <TD class=house-type><LABEL class=ui-green><INPUT onclick=update(47) value="修    改" type=button
-                                                                  name=search></LABEL></TD>
-                <TD class=house-price><LABEL class=ui-green><INPUT value="删    除" type=button name=search></LABEL></TD>
-            </TR>
-            <TR>
-                <TD class=house-thumb><SPAN><A href="details.htm" target="_blank"><img src="../images/thumb_house.gif"
-                                                                                       width="100" height="75"
-                                                                                       alt=""></A></SPAN></TD>
-                <TD>
-                    <DL>
-                        <DT><A href="details.htm" target="_blank">大房子</A></DT>
-                        <DD>海淀区中关村大街,100平米<BR>联系方式：123456789</DD>
-                    </DL>
-                </TD>
-                <TD class=house-type><LABEL class=ui-green><INPUT onclick=update(6) value="修    改" type=button
-                                                                  name=search></LABEL></TD>
-                <TD class=house-price><LABEL class=ui-green><INPUT value="删    除" type=button name=search></LABEL></TD>
-            </TR>
+            </c:forEach>
+
             </TBODY>
         </TABLE>
     </DIV>

@@ -23,7 +23,7 @@ public class FabuServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String title = request.getParameter("title");
         String type_id = request.getParameter("type_id");
-        String floorage = request.getParameter("floorage");
+        String floorage_s = request.getParameter("floorage");
         String price_s = request.getParameter("price");
         String house_date = request.getParameter("houseDate");
         String district_id = request.getParameter("district_id");
@@ -35,6 +35,7 @@ public class FabuServlet extends HttpServlet {
         int districtId = Integer.parseInt(district_id);
         int streetId = Integer.parseInt(street_id);
         int price = Integer.parseInt(price_s);
+        int floorage = Integer.parseInt(floorage_s);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date houseDate;
         try {

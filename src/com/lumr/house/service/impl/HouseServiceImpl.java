@@ -16,7 +16,6 @@ import java.util.List;
  * Created by lumr on 2017/4/6.
  */
 public class HouseServiceImpl extends BaseDao implements HouseService {
-    public static int maxResult = 5;
 
     @Override
     public List<House> getAllHouses() {
@@ -85,6 +84,26 @@ public class HouseServiceImpl extends BaseDao implements HouseService {
         Query query = session.createQuery(hql);
         query.setProperties(search);
         return query.list();
+    }
+
+    @Override
+    public int getHousesPages() {
+        Session session = getSession();
+        session.beginTransaction();
+        Query query = session.createQuery("select count(id) from House ");
+        int result = Integer.parseInt(query.uniqueResult().toString());
+        session.getTransaction().commit();
+        if (result%maxResult == 0)
+            return result/maxResult;
+        else
+            return result/maxResult+1;
+    }
+
+    @Override
+    public House getHouse(int id) {
+        Session session = getSession();
+        session.beginTransaction();
+        return (House)session.get(House.class,id);
     }
 
 

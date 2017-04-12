@@ -4,6 +4,8 @@ import com.lumr.house.dao.BaseDao;
 import com.lumr.house.entity.District;
 import com.lumr.house.entity.House;
 import com.lumr.house.entity.Street;
+import com.lumr.house.service.HouseService;
+import com.lumr.house.service.impl.HouseServiceImpl;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -16,7 +18,7 @@ import java.util.List;
 public class Test extends BaseDao {
     public static void main(String[] args) {
         Test test = new Test();
-        test.addStreet();
+        test.getPages();
     }
 
     private void query(){
@@ -49,5 +51,10 @@ public class Test extends BaseDao {
             e.printStackTrace();
             ts.rollback();
         }
+    }
+
+    private void getPages(){
+        HouseService service = new HouseServiceImpl();
+        System.out.println(service.getHousesPages());
     }
 }

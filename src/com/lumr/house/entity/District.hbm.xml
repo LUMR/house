@@ -7,7 +7,7 @@
     <class name="com.lumr.house.entity.District" table="district" schema="house">
         <id name="id" column="ID"/>
         <property name="name" column="NAME"/>
-        <set name="streets">
+        <set name="streets" inverse="true">
             <key column="DISTRICT_ID"></key>
             <one-to-many class="com.lumr.house.entity.Street"/>
         </set>
