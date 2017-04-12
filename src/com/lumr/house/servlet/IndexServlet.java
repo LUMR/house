@@ -1,8 +1,14 @@
 package com.lumr.house.servlet;
 
+import com.lumr.house.entity.District;
 import com.lumr.house.entity.House;
+import com.lumr.house.entity.Types;
+import com.lumr.house.service.DistrictService;
 import com.lumr.house.service.HouseService;
+import com.lumr.house.service.TypesService;
+import com.lumr.house.service.impl.DistrictServiceImpl;
 import com.lumr.house.service.impl.HouseServiceImpl;
+import com.lumr.house.service.impl.TypesServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,18 +23,20 @@ import java.util.List;
  */
 @WebServlet(name = "IndexServlet",urlPatterns = "/index")
 public class IndexServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HouseService service = new HouseServiceImpl();
         List<House> houses = service.getAllHouses();
+
+        DistrictService districtService = new DistrictServiceImpl();
+        List<District> districts = districtService.getAllDistrict();
+
+        TypesService typesService = new TypesServiceImpl();
+        List<Types> types = typesService.getAllTypes();
+
+        req.setAttribute("types",types);
+        req.setAttribute("districts",districts);
         req.setAttribute("houses",houses);
         req.getRequestDispatcher("list.jsp").forward(req,resp);
     }

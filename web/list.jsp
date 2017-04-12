@@ -21,12 +21,12 @@
 </DIV>
 <DIV id=navbar class=wrap>
     <DL class="search clearfix">
-        <FORM id=sform method=post action=search.action>
+        <FORM id="sform" method="post" action="/search">
             <DT>
             <UL>
                 <LI class=bold>房屋信息</LI>
                 <LI>标题：<INPUT class=text type=text name=title> <LABEL class=ui-blue>
-                    <INPUT onclick=doSearch() value=搜索房屋 type=button name=search></LABEL>
+                    <INPUT value=搜索房屋 type="submit" name=search></LABEL>
                 </LI>
             </UL>
             </DT>
@@ -34,10 +34,10 @@
                 <UL>
                     <LI class=first>价格</LI>
                     <LI><SELECT name=price>
-                        <OPTION selected value="">不限</OPTION>
-                        <OPTION value=0-100>100元以下</OPTION>
-                        <OPTION value=100-200>100元—200元</OPTION>
-                        <OPTION value=200-1000000>200元以上</OPTION>
+                        <OPTION selected value="0">不限</OPTION>
+                        <OPTION value=1>100元以下</OPTION>
+                        <OPTION value=2>100元—200元</OPTION>
+                        <OPTION value=3>200元以上</OPTION>
                     </SELECT></LI>
                 </UL>
             </DD>
@@ -45,14 +45,11 @@
                 <UL>
                     <LI class=first>房屋位置</LI>
                     <LI><SELECT id=street name=street_id>
-                        <OPTION selected
-                                value="">不限
-                        </OPTION>
-                        <OPTION value=1000>知春路</OPTION>
-                        <OPTION value=1001>中关村大街
-                        </OPTION>
-                        <OPTION value=1002>学院路</OPTION>
-                        <OPTION value=1003>朝阳路</OPTION>
+                        <OPTION selected value="0">不限</OPTION>
+                        <c:forEach var="district" items="${districts}">
+                            <OPTION value="${district.id}">${district.name}</OPTION>
+                        </c:forEach>
+
                     </SELECT></LI>
                 </UL>
             </DD>
@@ -60,11 +57,11 @@
                 <UL>
                     <LI class=first>房型</LI>
                     <LI><SELECT name=type_id>
-                        <OPTION selected value="">不限</OPTION>
-                        <OPTION value=1000>一室一厅</OPTION>
-                        <OPTION value=1001>一室两厅</OPTION>
-                        <OPTION value=1002>两室一厅</OPTION>
-                        <OPTION value=1003>两室两厅</OPTION>
+                        <OPTION selected value="0">不限</OPTION>
+                        <c:forEach var="type" items="${types}">
+                            <OPTION value="${type.id}">${type.name}</OPTION>
+                        </c:forEach>
+
                     </SELECT>
                     </LI>
                 </UL>
@@ -73,10 +70,10 @@
                 <UL>
                     <LI class=first>面积</LI>
                     <LI><SELECT name=floorage>
-                        <OPTION selected value="">不限</OPTION>
-                        <OPTION value=0-40>40以下</OPTION>
-                        <OPTION value=40-500>40-500</OPTION>
-                        <OPTION value=500-1000000>500以上</OPTION>
+                        <OPTION selected value="0">不限</OPTION>
+                        <OPTION value=1>40以下</OPTION>
+                        <OPTION value=2>40-500</OPTION>
+                        <OPTION value=3>500以上</OPTION>
                     </SELECT></LI>
                 </UL>
             </DD>
@@ -97,17 +94,16 @@
                         <DD>${house.description}<BR>联系方式：${house.contact}</DD>
                     </DL>
                 </TD>
-                <TD class=house-type>一室一厅</TD>
-                <TD class=house-price><SPAN>346.0</SPAN>元/月</TD>
+                <TD class=house-type>${house.types.name}</TD>
+                <TD class=house-price><SPAN>${house.price}</SPAN>元/月</TD>
             </TR>
         </c:forEach>
 
-        <TR>无租房信息</TR>
         </TBODY>
     </TABLE>
     <DIV class=pager>
         <UL>
-            <LI class=current><A href="index.jsp">首页</A></LI>
+            <LI class=current><A href="/index">首页</A></LI>
             <LI><A href="#">上一页</A></LI>
             <LI><A href="#">下一页</A></LI>
             <LI><A href="#">末页</A></LI>

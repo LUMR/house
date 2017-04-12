@@ -33,7 +33,5 @@ public class TypeServlet extends HttpServlet {
         }
         out.flush();
         out.close();
-        session.getTransaction().commit();
-        session.close();
     }
 }
