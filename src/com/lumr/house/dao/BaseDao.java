@@ -13,6 +13,7 @@ import java.util.List;
 public class BaseDao {
     private static Configuration configuration;
     private static SessionFactory factory;
+    protected static Session session;
 
     static {
         configuration = new Configuration().configure();

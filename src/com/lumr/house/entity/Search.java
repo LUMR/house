@@ -18,7 +18,7 @@ public class Search {
     private static int[] AGE = new int[]{0, 40, 500, 10000000};
 
     public Search(String title, int price, int floorage, int streetId, int typeId) {
-        this.title = title;
+        this.setTitle(title);
         this.priceLv = price;
         this.floorage = floorage;
         this.streetId = streetId;
@@ -69,7 +69,7 @@ public class Search {
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        this.title = "%"+title+"%";
     }
 
     public int getPriceLv() {

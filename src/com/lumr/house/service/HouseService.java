@@ -12,7 +12,7 @@ public interface HouseService {
     List<House> getAllHouses();
     List<House> getAllHouses(int pages);
     List<House> getHouses(Users users);
-    List<House> getHouses(Search search);
+    List<House> getHouses(Search search,int page);
     int getHousesPages();
     House getHouse(int id);
     int addHouse(House house);

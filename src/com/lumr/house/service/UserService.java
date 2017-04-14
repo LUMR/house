@@ -9,4 +9,5 @@ public interface UserService {
     int checkUser(String name);
     Users login(Users user);
     int register(Users user);
+    Users getUser(Users user);
 }

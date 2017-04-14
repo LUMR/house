@@ -5,7 +5,9 @@
 <hibernate-mapping>
 
     <class name="com.lumr.house.entity.Users" table="users" schema="house">
-        <id name="id" column="ID"/>
+        <id name="id" column="ID">
+            <generator class="increment"/>
+        </id>
         <property name="name" column="NAME"/>
         <property name="password" column="PASSWORD"/>
         <property name="telephone" column="TELEPHONE"/>

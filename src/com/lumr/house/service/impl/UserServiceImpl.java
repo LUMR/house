@@ -46,4 +46,10 @@ public class UserServiceImpl extends BaseDao implements UserService {
     public int register(Users user) {
         return saveObj(user);
     }
+
+    @Override
+    public Users getUser(Users user) {
+        UserDao dao = new UserDaoImpl();
+        return dao.getUser(user);
+    }
 }

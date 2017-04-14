@@ -63,7 +63,7 @@ public class HouseServiceImpl extends BaseDao implements HouseService {
     }
 
     @Override
-    public List<House> getHouses(Search search) {
+    public List<House> getHouses(Search search,int page) {
         Session session = getSession();
         session.beginTransaction();
         String hql = "from House where 1=1";
@@ -83,6 +83,8 @@ public class HouseServiceImpl extends BaseDao implements HouseService {
         }
         Query query = session.createQuery(hql);
         query.setProperties(search);
+        query.setFirstResult(page*maxResult);
+        query.setMaxResults(maxResult);
         return query.list();
     }
 
