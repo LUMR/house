@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0032)http://localhost:8080/HouseRent/ -->
 <HTML xmlns="http://www.w3.org/1999/xhtml">
@@ -22,7 +23,8 @@
     <DIV class=dialog>
         <DIV class=box>
             <H4>用户登录</H4>
-            <FORM id=user method=post name=user action="login">
+            <s:fielderror></s:fielderror>
+            <FORM id=user method=post name=user action="login.action">
                 <DIV class=infos>
                     <TABLE class=field>
                         <TBODY>
