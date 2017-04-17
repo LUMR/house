@@ -15,7 +15,7 @@
 <a href="/regs.jsp">注册</a>
 <a href="/login.jsp">登陆</a>
 <a href="/fabu.jsp">登记房屋</a>
-<a href="/guanli">用户管理</a>
+<a href="/manager.action">用户管理</a>
 <a href="/logout">注销</a>
 </body>
 </html>

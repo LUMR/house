@@ -6,10 +6,25 @@
 
 <struts>
     <package name="action" extends="struts-default">
+        <!--登陆-->
         <action name="login" class="com.lumr.house.action.Login">
-            <result name="success">/success.jsp</result>
+            <result name="success">/guanli.jsp</result>
             <result name="error">/fault.jsp</result>
             <result name="input">/login.jsp</result>
+        </action>
+        <!--登出-->
+        <action name="logout" class="com.lumr.house.action.Logout">
+            <result name="success">/index.jsp</result>
+        </action>
+        <!--用户管理界面-->
+        <action name="manager" class="com.lumr.house.action.UserManage">
+            <result name="success">/guanli.jsp</result>
+            <result name="error">/login.jsp</result>
+        </action>
+    </package>
+    <package name="view" extends="struts-default">
+        <action name="index" class="com.lumr.house.action.Index">
+            <result name="success">/list.jsp</result>
         </action>
     </package>
 </struts>

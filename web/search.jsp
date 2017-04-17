@@ -104,8 +104,8 @@
     <DIV class=pager>
         <UL>
             <LI class=current><A href="/index">首页</A></LI>
-            <LI><A href="/search?page=${page-1}">上一页</A></LI>
-            <LI><A href="/search?page=${page+1}">下一页</A></LI>
+            <LI><A href="/search?page=${page_i-1}">上一页</A></LI>
+            <LI><A href="/search?page=${page_i+1}">下一页</A></LI>
             <LI><A href="/search?page=-1">末页</A></LI>
         </UL>
         <SPAN

@@ -13,8 +13,7 @@
 <HEAD>
     <TITLE>青鸟租房 - 用户管理</TITLE>
     <META content="text/html; charset=utf-8" http-equiv=Content-Type>
-    <LINK
-            rel=stylesheet type=text/css href="css/style.css">
+    <LINK rel=stylesheet type=text/css href="css/style.css">
 
     <META name=GENERATOR>
 </HEAD>
@@ -24,7 +23,7 @@
     <DIV class=search>
         <label class="ui-blue"><code>你好! ${user.name}</code></label>
         <LABEL class="ui-green searchs"><a href="fabu.jsp" title="">发布房屋信息</a></LABEL>
-        <LABEL class=ui-green><INPUT onclick='document.location="index.jsp"' value="退       出" type=button name=search></LABEL>
+        <LABEL class="ui-green searchs"><a href="logout.action" title="">注销</a></LABEL>
     </DIV>
 </DIV>
 <DIV class="main wrap">
