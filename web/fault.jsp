@@ -8,9 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>登录失败</title>
+    <title>请求失败</title>
 </head>
 <body>
-<h1>Hello! ${name}</h1>
+<h1>请求无效</h1>
+<a href="index.action">返回主页</a>
 </body>
 </html>

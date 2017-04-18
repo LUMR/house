@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0050)http://localhost:8080/HouseRent/manage!list.action -->
 <HTML xmlns="http://www.w3.org/1999/xhtml">
@@ -26,6 +27,7 @@
         <LABEL class="ui-green searchs"><a href="logout.action" title="">注销</a></LABEL>
     </DIV>
 </DIV>
+<s:debug></s:debug>
 <DIV class="main wrap">
     <DIV id=houseArea>
         <TABLE class=house-list>

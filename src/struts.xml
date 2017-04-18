@@ -5,6 +5,18 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
+    <!--修改xml文件后不需重启-->
+    <constant name="struts.devMode" value="true"/>
+    <!--使用动态方法调用-->
+    <!--<constant name="struts.enable.DynamicMethodInvocation" value="true"/>-->
+    <!--默认页面-->
+    <package name="default" extends="struts-default">
+        <default-action-ref name="default"/>
+        <action name="default">
+            <result>/fault.jsp</result>
+        </action>
+    </package>
+
     <package name="action" extends="struts-default">
         <!--登陆-->
         <action name="login" class="com.lumr.house.action.Login">
@@ -21,10 +33,27 @@
             <result name="success">/guanli.jsp</result>
             <result name="error">/login.jsp</result>
         </action>
+        <action name="fabu" class="com.lumr.house.action.Release">
+            <result name="input">/fabu.jsp</result>
+            <result name="error">/fabu.jsp</result>
+            <result name="success">manager.action</result>
+        </action>
+        <action name="search" class="com.lumr.house.action.Search">
+            <result>/search.jsp</result>
+            <result name="input">/search.jsp</result>
+        </action>
+        <action name="search_n" method="next" class="com.lumr.house.action.Search">
+            <result>/search.jsp</result>
+            <result name="input">/search.jsp</result>
+        </action>
     </package>
+
     <package name="view" extends="struts-default">
         <action name="index" class="com.lumr.house.action.Index">
             <result name="success">/list.jsp</result>
+        </action>
+        <action name="get_types" class="com.lumr.house.action.GetData" method="get_types">
+            <result name="success" type="postback"></result>
         </action>
     </package>
 </struts>

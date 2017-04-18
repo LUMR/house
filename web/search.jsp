@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0030)http://localhost:8080/House-2/ -->
 <HTML xmlns="http://www.w3.org/1999/xhtml">
@@ -22,6 +23,7 @@
 <DIV id=navbar class=wrap>
     <DL class="search clearfix">
         <FORM id="sform" method="post" action="/search">
+            <s:fielderror></s:fielderror>
             <DT>
             <UL>
                 <LI class=bold>房屋信息</LI>
@@ -104,9 +106,9 @@
     <DIV class=pager>
         <UL>
             <LI class=current><A href="/index">首页</A></LI>
-            <LI><A href="/search?page=${page_i-1}">上一页</A></LI>
-            <LI><A href="/search?page=${page_i+1}">下一页</A></LI>
-            <LI><A href="/search?page=-1">末页</A></LI>
+            <LI><A href="/search_n?page=${page-1}">上一页</A></LI>
+            <LI><A href="/search_n?page=${page+1}">下一页</A></LI>
+            <LI><A href="/search_n?page=-1">末页</A></LI>
         </UL>
         <SPAN
                 class=total>1/2页</SPAN></DIV>

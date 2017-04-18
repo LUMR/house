@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
 <!-- saved from url=(0044)http://localhost:8080/HouseRent/page/add.jsp -->
 <HTML xmlns="http://www.w3.org/1999/xhtml">
@@ -34,6 +35,8 @@
             <DT>新房屋信息发布</DT>
             <DD class=past>填写房屋信息</DD>
         </DL>
+        <s:fielderror></s:fielderror>
+        <s:actionerror></s:actionerror>
         <DIV class=box>
             <FORM id=add_action method=post name=add.action action="/fabu">
                 <DIV class=infos>
