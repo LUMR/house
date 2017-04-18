@@ -19,8 +19,8 @@
     <script>
         $(document).ready(
             function () {
-                $("#types").load("/gettype");
-                $("#district").load("/getdist");
+                $("#types").load("/get_types");
+                $("#district").load("/get_dist");
             }
         );
     </script>

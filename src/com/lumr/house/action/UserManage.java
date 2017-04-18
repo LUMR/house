@@ -21,7 +21,7 @@ public class UserManage implements Action {
         else{
             UserService service = new UserServiceImpl();
             Users newUser = service.getUser(user);
-            session.put("user",newUser);
+            session.replace("user",newUser);
             return SUCCESS;
         }
     }

@@ -45,7 +45,7 @@ function callBackName() {
 
 function get_street(dist) {
     var district = dist.value;
-    $("#street").load("/getstreet",{"district":district},function(data,statusTxt,xhr){callBack_street(data,statusTxt,xhr);})
+    $("#street").load("/get_streets",{"did":district},function(data,statusTxt,xhr){callBack_street(data,statusTxt,xhr);})
 }
 
 function callBack_street(data,statusTxt,xhr) {
