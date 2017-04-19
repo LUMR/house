@@ -27,6 +27,7 @@
         <LABEL class="ui-green searchs"><a href="logout.action" title="">注销</a></LABEL>
     </DIV>
 </DIV>
+<s:actionerror></s:actionerror>
 <s:debug></s:debug>
 <DIV class="main wrap">
     <DIV id=houseArea>
@@ -42,8 +43,9 @@
                         <DD>${house.street.district.name}${house.street.name},${house.floorage}平米<BR>联系方式：${house.contact}</DD>
                     </DL>
                 </TD>
-                <TD class=house-type><LABEL class=ui-green><INPUT onclick=update(46) value="修    改" type=button
-                                                                  name=search></LABEL></TD>
+                <TD class=house-type><LABEL class=ui-green>
+                    <a href="updateform.action?hid=${house.id}" ><INPUT  value="修    改" type=button name=search></a></LABEL>
+                </TD>
                 <TD class=house-price><LABEL class=ui-green><INPUT value="删    除" type=button name=search></LABEL></TD>
             </TR>
             </c:forEach>

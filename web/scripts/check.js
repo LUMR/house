@@ -48,6 +48,14 @@ function get_street(dist) {
     $("#street").load("/get_streets",{"did":district},function(data,statusTxt,xhr){callBack_street(data,statusTxt,xhr);})
 }
 
+function get_dist() {
+    $("#district").load("/get_dist");
+}
+
+function get_types() {
+    $("#types").load("/get_types");
+}
+
 function callBack_street(data,statusTxt,xhr) {
     if(statusTxt=="error")
         alert("Error: "+xhr.status+": "+xhr.statusText);

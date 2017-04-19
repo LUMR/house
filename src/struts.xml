@@ -38,6 +38,12 @@
             <result name="error">/fabu.jsp</result>
             <result name="success" type="redirectAction">manager</result>
         </action>
+        <action name="update" method="update" class="com.lumr.house.action.Release">
+            <result type="redirectAction">manager</result>
+            <result name="error">/update.jsp</result>
+            <result name="login">/login.jsp</result>
+            <result name="input">/update.jsp</result>
+        </action>
         <action name="search" class="com.lumr.house.action.Search">
             <result>/search.jsp</result>
             <result name="input">/search.jsp</result>
@@ -51,6 +57,14 @@
     <package name="view" extends="struts-default">
         <action name="index" class="com.lumr.house.action.Index">
             <result name="success">/list.jsp</result>
+        </action>
+        <action name="details" class="com.lumr.house.action.HouseDetail">
+            <result>/details.jsp</result>
+        </action>
+        <action name="updateform" method="update" class="com.lumr.house.action.HouseDetail">
+            <result>/update.jsp</result>
+            <result name="login" type="redirect">/login.jsp</result>
+            <result name="error">manager.action</result>
         </action>
 
         <action name="get_types" class="com.lumr.house.action.GetData" method="get_types">

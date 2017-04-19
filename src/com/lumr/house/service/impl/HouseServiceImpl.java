@@ -103,7 +103,7 @@ public class HouseServiceImpl extends BaseDao implements HouseService {
 
     @Override
     public House getHouse(int id) {
-        Session session = getSession();
+        session = getSession();
         session.beginTransaction();
         return (House)session.get(House.class,id);
     }
@@ -116,7 +116,16 @@ public class HouseServiceImpl extends BaseDao implements HouseService {
 
     @Override
     public int updateHouse(House house) {
-        return 0;
+        Transaction ts = session.getTransaction();
+        try {
+            session.update(house);
+            ts.commit();
+            return 1;
+        }catch (HibernateException e){
+            e.printStackTrace();
+            ts.rollback();
+            return 0;
+        }
     }
 
     @Override

@@ -16,6 +16,7 @@ import java.util.Map;
  * Created by fsweb on 17-4-18.
  */
 public class Release extends ActionSupport {
+    private int hid;
     private String title;
     private int type_id;
     private int floorage;
@@ -26,6 +27,9 @@ public class Release extends ActionSupport {
     private String contact;
     private String description;
 
+    /**
+     * 发布新房子
+     */
     @Override
     public String execute() throws Exception {
         Map<String, Object> session = ActionContext.getContext().getSession();
@@ -43,6 +47,40 @@ public class Release extends ActionSupport {
         }
     }
 
+    /**
+     * 更新房子信息
+     */
+    public String update() {
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        Users user = (Users) session.get("user");
+        if (user == null) {
+            addActionError("请先登录");
+            return LOGIN;
+        }
+        HouseService service = new HouseServiceImpl();
+        House house = service.getHouse(hid);
+        if (user.getId() != house.getUserId()) {
+            addActionError("你没有修改该房屋的权限");
+            return ERROR;
+        }
+
+        //更新房屋信息
+        house.setTitle(title);
+        house.setContact(contact);
+        house.setDescription(description);
+        house.setFloorage(floorage);
+        house.setPrice(price);
+        house.setStreetId(street_id);
+        house.setTypeId(type_id);
+        int result = service.updateHouse(house);
+        if (result == 1)
+            return SUCCESS;
+        else {
+            addActionError("修改失败");
+            return ERROR;
+        }
+    }
+
     @Override
     public void validate() {
         //验证输入是否完整
@@ -52,6 +90,14 @@ public class Release extends ActionSupport {
             addFieldError("number", "数字未填写或填写错误");
         if (houseDate == null)
             addFieldError("date", "请填写正确的日期");
+    }
+
+    public int getHid() {
+        return hid;
+    }
+
+    public void setHid(int hid) {
+        this.hid = hid;
     }
 
     public String getTitle() {
