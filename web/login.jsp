@@ -24,6 +24,7 @@
         <DIV class=box>
             <H4>用户登录</H4>
             <s:fielderror></s:fielderror>
+            <s:actionerror></s:actionerror>
             <FORM id=user method=post name=user action="login.action">
                 <DIV class=infos>
                     <TABLE class=field>
