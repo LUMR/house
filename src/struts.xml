@@ -113,5 +113,9 @@
         <action name="get_streets" class="com.lumr.house.action.GetData" method="get_streets">
             <result>/streets.jsp</result>
         </action>
+        <action name="checkuser" class="com.lumr.house.action.GetData" method="checkUser">
+            <result name="true" type="httpheader"></result>
+            <result name="false" type="postback">false</result>
+        </action>
     </package>
 </struts>

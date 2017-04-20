@@ -31,6 +31,7 @@ function checkUserName(doc_name) {
 function callBackName() {
     if (xmlHttp.status == 200 && xmlHttp.readyState == 4) {
         var mes = document.getElementById("checkName");
+        alert(xmlHttp.response);
         if (xmlHttp.responseText == "true") {
             NameNotExist = true;
             mes.innerHTML = "可以使用";
