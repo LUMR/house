@@ -14,15 +14,11 @@ import java.util.Map;
 public class UserManage implements Action {
     @Override
     public String execute() throws Exception {
-        Map<String,Object> session = ActionContext.getContext().getSession();
-        Users user = (Users)session.get("user");
-        if (user == null)
-            return ERROR;
-        else{
-            UserService service = new UserServiceImpl();
-            Users newUser = service.getUser(user);
-            session.replace("user",newUser);
-            return SUCCESS;
-        }
+        Map<String, Object> session = ActionContext.getContext().getSession();
+        Users user = (Users) session.get("user");
+        UserService service = new UserServiceImpl();
+        Users newUser = service.getUser(user);
+        session.replace("user", newUser);
+        return SUCCESS;
     }
 }

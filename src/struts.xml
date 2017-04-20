@@ -18,8 +18,16 @@
     </package>
 
     <package name="action" extends="struts-default">
+        <!--拦截器-->
+        <interceptors>
+            <interceptor name="timer" class="com.lumr.house.interceptor.TimerInterceptor"/>
+            <interceptor name="permission" class="com.lumr.house.interceptor.PermissionInterceptor"/>
+        </interceptors>
+
         <!--登陆-->
         <action name="login" class="com.lumr.house.action.Login">
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="timer"/>
             <result name="success" type="redirectAction">manager</result>
             <result name="error">/fault.jsp</result>
             <result name="input">/login.jsp</result>
@@ -30,32 +38,59 @@
         </action>
         <!--用户管理界面-->
         <action name="manager" class="com.lumr.house.action.UserManage">
+            <interceptor-ref name="permission"/>
+            <interceptor-ref name="defaultStack"/>
             <result name="success">/guanli.jsp</result>
-            <result name="error">/login.jsp</result>
+            <result name="login">/login.jsp</result>
         </action>
+        <!--发布新房子-->
         <action name="fabu" class="com.lumr.house.action.Release">
             <result name="input">/fabu.jsp</result>
             <result name="error">/fabu.jsp</result>
             <result name="success" type="redirectAction">manager</result>
         </action>
+        <!--更新房子信息-->
         <action name="update" method="update" class="com.lumr.house.action.Release">
             <result type="redirectAction">manager</result>
             <result name="error">/update.jsp</result>
             <result name="login">/login.jsp</result>
             <result name="input">/update.jsp</result>
         </action>
+        <!--搜索房子-->
         <action name="search" class="com.lumr.house.action.Search">
             <result>/search.jsp</result>
             <result name="input">/search.jsp</result>
         </action>
+        <!--搜索结果下一页-->
         <action name="search_n" method="next" class="com.lumr.house.action.Search">
             <result>/search.jsp</result>
             <result name="input">/search.jsp</result>
         </action>
+        <!--上传文件-->
+        <action name="upload" class="com.lumr.house.action.Upload">
+            <interceptor-ref name="permission"/>
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">1000000</param>
+                <param name="allowedTypes">image/*</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"/>
+            <result>/success.jsp</result>
+            <result name="input">/fault.jsp</result>
+            <result name="login">/login.jsp</result>
+        </action>
     </package>
 
     <package name="view" extends="struts-default">
+        <interceptors>
+            <interceptor name="timer" class="com.lumr.house.interceptor.TimerInterceptor"/>
+            <interceptor name="test" class="com.lumr.house.interceptor.LoginInterceptor"/>
+        </interceptors>
+
         <action name="index" class="com.lumr.house.action.Index">
+            <interceptor-ref name="test"/>
+            <interceptor-ref name="timer"/>
+            <interceptor-ref name="defaultStack"/>
+
             <result name="success">/list.jsp</result>
         </action>
         <action name="details" class="com.lumr.house.action.HouseDetail">
@@ -68,9 +103,11 @@
         </action>
 
         <action name="get_types" class="com.lumr.house.action.GetData" method="get_types">
+            <interceptor-ref name="timer"/>
             <result>/types.jsp</result>
         </action>
         <action name="get_dist" class="com.lumr.house.action.GetData" method="get_districts">
+            <interceptor-ref name="timer"/>
             <result>/districts.jsp</result>
         </action>
         <action name="get_streets" class="com.lumr.house.action.GetData" method="get_streets">
